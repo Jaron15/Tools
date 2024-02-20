@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import { IoIosRefresh } from "react-icons/io";
 
-function SnsRedactor() {
+function EmailRedactor() {
     const [email, setEmail] = useState("test@example.com");
   const [inputValue, setInputValue] = useState('');
 
@@ -65,4 +65,4 @@ onChange={(e) => setInputValue(e.target.value)}
   )
 }
 
-export default SnsRedactor
+export default EmailRedactor

@@ -52,7 +52,7 @@ function SNSRedactor() {
 
   return (
     <div className="max-w-lg mx-auto p-5 flex flex-col  gap-5">
-      <div className="border border-gray-300 rounded-lg p-4">
+      <div className="border border-gray-300 rounded-lg p-4 ">
         <div className="flex justify-between items-center border-b border-gray-300 pb-2 mb-4">
           <h2 className="text-lg font-semibold m-0">SNS</h2>
           <IoIosRefresh className="cursor-pointer" onClick={generateRandomHandle} />
