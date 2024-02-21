@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { IoIosRefresh } from "react-icons/io";
 
-function PhoneRedactor() {
+function PhoneRedactor({onCopy}) {
     const [phoneNumber, setPhoneNumber] = useState(`+16235556431`);
   const [inputValue, setInputValue] = useState('');
 
@@ -16,6 +16,7 @@ function PhoneRedactor() {
       .catch((err) => {
         console.error('Failed to copy phone number:', err);
       });
+      onCopy("Phone");
   };
 
   const generateRandomPhoneNumber = () => {

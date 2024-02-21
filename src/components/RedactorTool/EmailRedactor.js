@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import { IoIosRefresh } from "react-icons/io";
 
-function EmailRedactor() {
+function EmailRedactor({onCopy}) {
     const [email, setEmail] = useState("test@example.com");
   const [inputValue, setInputValue] = useState('');
 
@@ -22,6 +22,7 @@ function EmailRedactor() {
       .catch((err) => {
         console.error("Failed to copy email:", err);
       });
+      onCopy("Email");
   };
   const generateRandomEmail = () => {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

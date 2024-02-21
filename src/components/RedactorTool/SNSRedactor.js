@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { IoIosRefresh } from 'react-icons/io';
 
-function SNSRedactor() {
+function SNSRedactor({onCopy}) {
   const [snsHandle, setSnsHandle] = useState(`test accounts`);
   const [inputValue, setInputValue] = useState('');
 
@@ -27,6 +27,7 @@ function SNSRedactor() {
       .catch((err) => {
         console.error('Failed to copy SNS handle:', err);
       });
+      onCopy("SNS");
   };
 
   const generateRandomHandle = () => {
