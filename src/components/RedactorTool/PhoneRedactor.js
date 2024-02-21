@@ -8,14 +8,30 @@ function PhoneRedactor({onCopy}) {
   const redactAndCopyPhoneNumber = () => {
     const redactedNumber = `${phoneNumber.slice(-2)}`;
 
-    navigator.clipboard
-      .writeText(redactedNumber)
-      .then(() => {
-        console.log('Phone number copied to clipboard:', redactedNumber);
-      })
-      .catch((err) => {
-        console.error('Failed to copy phone number:', err);
-      });
+    if (navigator.clipboard) {
+      // Use the Clipboard API if available
+      navigator.clipboard
+        .writeText(redactedNumber)
+        .then(() => {
+          console.log("Email copied to clipboard:", redactedNumber);
+        })
+        .catch((err) => {
+          console.error("Failed to copy email:", err);
+        });
+    } else {
+      // Fallback to the older execCommand method
+      const textArea = document.createElement("textarea");
+      textArea.value = redactedNumber;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand("copy");
+        console.log("Email copied to clipboard:", redactedNumber);
+      } catch (err) {
+        console.error("Failed to copy email:", err);
+      }
+      document.body.removeChild(textArea);
+    }
       onCopy("Phone");
   };
 
@@ -31,7 +47,7 @@ function PhoneRedactor({onCopy}) {
 
 
   return (
-    <div className="max-w-lg mx-auto p-5 flex flex-col gap-5">
+    <div className="max-w-lg mx-auto p-5 flex flex-col gap-5 text-black">
       <div className="border border-gray-300 rounded-lg p-4 bg-slate-100">
         <div className="flex justify-between items-center border-b border-gray-300 pb-2 mb-4">
           <h2 className="text-lg font-semibold m-0">Phone Number</h2>
