@@ -27,9 +27,7 @@ function RedacContainer() {
 
   return (
     <div>
-        <div className='flex justify-center'>
-            <h1 className='font-semibold text-5xl mb-2'>Redactor Tool</h1>
-        </div>
+        
         <div className="relative">
         <div className='flex flex-wrap'>
         <EmailRedactor onCopy={handleModal} />
